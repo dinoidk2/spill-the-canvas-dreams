@@ -33,6 +33,10 @@ const Home = () => {
               <span className="brush-stroke brush-stroke-purple">Canvas Dreams</span>
             </h1>
             
+            <h2 className="text-2xl md:text-3xl font-playfair text-impression-purple text-center leading-relaxed">
+              Oceana Viktoria S. Nebre
+            </h2>
+            
             <p className="text-xl md:text-2xl text-center text-muted-foreground max-w-2xl">
               Welcome to a world where impressionism meets digital art. An artistic journey showcasing my portfolio and passions.
             </p>
@@ -55,7 +59,7 @@ const Home = () => {
                 className="paint-border hover:scale-105 transition-transform"
               >
                 <div className="bg-white py-4 px-8 rounded-xl flex flex-col items-center justify-center">
-                  <span className="text-2xl font-dancing font-bold text-impression-purple">Profile</span>
+                  <span className="text-2xl font-playfair font-bold text-impression-purple">Profile</span>
                 </div>
               </Link>
               
@@ -64,7 +68,7 @@ const Home = () => {
                 className="paint-border hover:scale-105 transition-transform"
               >
                 <div className="bg-white py-4 px-8 rounded-xl flex flex-col items-center justify-center">
-                  <span className="text-2xl font-dancing font-bold text-impression-yellow">Hobbies</span>
+                  <span className="text-2xl font-playfair font-bold text-impression-yellow">Hobbies</span>
                 </div>
               </Link>
               
@@ -73,7 +77,7 @@ const Home = () => {
                 className="paint-border hover:scale-105 transition-transform"
               >
                 <div className="bg-white py-4 px-8 rounded-xl flex flex-col items-center justify-center">
-                  <span className="text-2xl font-dancing font-bold text-impression-blue">Gallery</span>
+                  <span className="text-2xl font-playfair font-bold text-impression-blue">Gallery</span>
                 </div>
               </Link>
               
@@ -82,13 +86,13 @@ const Home = () => {
                 className="paint-border hover:scale-105 transition-transform"
               >
                 <div className="bg-white py-4 px-8 rounded-xl flex flex-col items-center justify-center">
-                  <span className="text-2xl font-dancing font-bold text-impression-pink">Contact</span>
+                  <span className="text-2xl font-playfair font-bold text-impression-pink">Contact</span>
                 </div>
               </Link>
             </div>
             
             <div className="text-center mt-8">
-              <p className="text-muted-foreground animate-brush-rotate">
+              <p className="text-muted-foreground animate-brush-rotate font-source-sans">
                 ✨ Click and drag your mouse to create paint splatters! ✨
               </p>
             </div>

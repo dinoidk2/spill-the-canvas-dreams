@@ -32,30 +32,31 @@ const Profile = () => {
             </div>
             
             <div className="w-full md:w-2/3">
-              <div className="space-y-6">
-                <div>
-                  <h2 className="text-3xl font-dancing text-impression-purple mb-1">Name</h2>
-                  <p className="text-xl font-source-sans">Oceana Viktoria S. Nebre</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="p-5 rounded-xl bg-white/70 backdrop-blur-sm shadow-md hover:shadow-lg transition-all border border-white/80">
+                  <h2 className="text-2xl font-playfair text-impression-purple mb-2 border-b border-impression-purple/20 pb-1">Name</h2>
+                  <p className="text-lg font-source-sans">Oceana Viktoria S. Nebre</p>
                 </div>
                 
-                <div>
-                  <h2 className="text-3xl font-dancing text-impression-yellow mb-1">Age</h2>
-                  <p className="text-xl font-source-sans">15</p>
+                <div className="p-5 rounded-xl bg-white/70 backdrop-blur-sm shadow-md hover:shadow-lg transition-all border border-white/80">
+                  <h2 className="text-2xl font-playfair text-impression-yellow mb-2 border-b border-impression-yellow/20 pb-1">Age</h2>
+                  <p className="text-lg font-source-sans">15</p>
                 </div>
                 
-                <div>
-                  <h2 className="text-3xl font-dancing text-impression-blue mb-1">Occupation</h2>
-                  <p className="text-xl font-source-sans">Student / Digital Artist / Web Developer</p>
+                <div className="p-5 rounded-xl bg-white/70 backdrop-blur-sm shadow-md hover:shadow-lg transition-all border border-white/80">
+                  <h2 className="text-2xl font-playfair text-impression-blue mb-2 border-b border-impression-blue/20 pb-1">Occupation</h2>
+                  <p className="text-lg font-source-sans">Student / Digital Artist / Web Developer</p>
                 </div>
                 
-                <div>
-                  <h2 className="text-3xl font-dancing text-impression-orange mb-1">Education</h2>
-                  <p className="text-xl font-source-sans">San Beda College Alabang</p>
+                <div className="p-5 rounded-xl bg-white/70 backdrop-blur-sm shadow-md hover:shadow-lg transition-all border border-white/80">
+                  <h2 className="text-2xl font-playfair text-impression-orange mb-2 border-b border-impression-orange/20 pb-1">Education</h2>
+                  <p className="text-lg font-source-sans">San Beda College Alabang</p>
                 </div>
               </div>
               
-              <div className="mt-8 p-6 bg-gradient-to-br from-white via-[#f0f4f8] to-[#e6f1ff] rounded-lg shadow-inner">
-                <h3 className="text-2xl font-dancing text-impression-purple mb-2">About Me</h3>
+              <div className="mt-8 p-8 rounded-xl bg-gradient-to-br from-white/90 via-[#f9fafc] to-[#e6f0ff]/80 shadow-lg border border-white/60 relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-impression-blue/30 via-impression-purple/30 to-impression-pink/30"></div>
+                <h3 className="text-2xl font-playfair text-impression-purple mb-3">About Me</h3>
                 <p className="text-lg leading-relaxed font-source-sans text-gray-700">
                   I'm a passionate student with a love for digital art and web development. 
                   Drawing inspiration from impressionist masters like Monet and Van Gogh, 

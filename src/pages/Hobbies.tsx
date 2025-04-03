@@ -125,16 +125,18 @@ const Hobbies = () => {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
                 key={hobby.id}
-                className="gallery-item"
+                className="gallery-item rounded-xl overflow-hidden shadow-lg border border-white/50"
                 onClick={() => setSelectedHobby(hobby)}
               >
-                <img 
-                  src={hobby.image} 
-                  alt={hobby.name} 
-                  className="w-full h-64 object-cover"
-                />
-                <div className="gallery-overlay">
-                  <h3 className="gallery-title">{hobby.name}</h3>
+                <div className="relative h-64 overflow-hidden">
+                  <img 
+                    src={hobby.image} 
+                    alt={hobby.name} 
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                  />
+                  <div className="gallery-overlay bg-gradient-to-t from-impression-purple/80 via-impression-blue/60 to-transparent">
+                    <h3 className="gallery-title font-playfair text-2xl text-white drop-shadow-md">{hobby.name}</h3>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -142,9 +144,9 @@ const Hobbies = () => {
           
           {/* Hobby detail modal */}
           {selectedHobby && (
-            <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4" onClick={() => setSelectedHobby(null)}>
+            <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 backdrop-blur-sm" onClick={() => setSelectedHobby(null)}>
               <div 
-                className="bg-white rounded-xl p-6 max-w-2xl w-full mx-4 relative" 
+                className="bg-white rounded-xl p-6 max-w-2xl w-full mx-4 relative shadow-2xl" 
                 onClick={(e) => e.stopPropagation()}
               >
                 <button 
@@ -164,12 +166,12 @@ const Hobbies = () => {
                   </div>
                   
                   <div className="sm:w-1/2">
-                    <h3 className="text-3xl font-dancing text-impression-purple mb-3">{selectedHobby.name}</h3>
-                    <p className="text-lg text-gray-700">{selectedHobby.description}</p>
+                    <h3 className="text-3xl font-playfair text-impression-purple mb-3">{selectedHobby.name}</h3>
+                    <p className="text-lg font-source-sans text-gray-700">{selectedHobby.description}</p>
                     
-                    <div className="mt-6 p-4 bg-impression-cream/30 rounded-lg">
-                      <h4 className="text-xl font-dancing text-impression-blue mb-2">Why I love it</h4>
-                      <p className="text-gray-700">
+                    <div className="mt-6 p-4 bg-gradient-to-br from-white/90 via-[#f9fafc] to-[#e6f0ff]/80 rounded-lg shadow-md border border-white/60">
+                      <h4 className="text-xl font-playfair text-impression-blue mb-2">Why I love it</h4>
+                      <p className="font-source-sans text-gray-700">
                         This hobby allows me to express my creativity and provides a wonderful
                         escape into imagination. It's both challenging and relaxing!
                       </p>
