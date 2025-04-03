@@ -12,6 +12,27 @@ const Navigation: React.FC = () => {
     setMenuOpen(!menuOpen);
   };
 
+  // Determine if we're in static HTML mode
+  const isStaticHtml = typeof window !== 'undefined' && window.location.pathname.endsWith('.html');
+  
+  // Create navigation links based on mode
+  const navLinks = [
+    { path: isStaticHtml ? './home.html' : '/', label: 'Home' },
+    { path: isStaticHtml ? './profile.html' : '/profile', label: 'Profile' },
+    { path: isStaticHtml ? './hobbies.html' : '/hobbies', label: 'Hobbies' },
+    { path: isStaticHtml ? './gallery.html' : '/gallery', label: 'Gallery' },
+    { path: isStaticHtml ? './contact.html' : '/contact', label: 'Contact' }
+  ];
+
+  // Helper to determine if link is active
+  const isActive = (path: string) => {
+    if (isStaticHtml) {
+      const currentPage = window.location.pathname.split('/').pop() || '';
+      return path.includes(currentPage);
+    }
+    return location.pathname === path;
+  };
+
   return (
     <nav className="fixed top-0 left-0 w-full z-50 p-4 flex justify-center items-center">
       {isMobile ? (
@@ -28,51 +49,27 @@ const Navigation: React.FC = () => {
           {menuOpen && (
             <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 backdrop-blur-md bg-white/90 rounded-xl p-4 shadow-lg min-w-32">
               <ul className="flex flex-col space-y-2">
-                <li>
-                  <Link 
-                    to="/" 
-                    className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link 
-                    to="/profile" 
-                    className={`nav-link ${location.pathname === '/profile' ? 'active' : ''}`}
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    Profile
-                  </Link>
-                </li>
-                <li>
-                  <Link 
-                    to="/hobbies" 
-                    className={`nav-link ${location.pathname === '/hobbies' ? 'active' : ''}`}
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    Hobbies
-                  </Link>
-                </li>
-                <li>
-                  <Link 
-                    to="/gallery" 
-                    className={`nav-link ${location.pathname === '/gallery' ? 'active' : ''}`}
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    Gallery
-                  </Link>
-                </li>
-                <li>
-                  <Link 
-                    to="/contact" 
-                    className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`}
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    Contact
-                  </Link>
-                </li>
+                {navLinks.map((link, index) => (
+                  <li key={index}>
+                    {isStaticHtml ? (
+                      <a 
+                        href={link.path} 
+                        className={`nav-link ${window.location.pathname.endsWith(link.path.split('/').pop() || '') ? 'active' : ''}`}
+                        onClick={() => setMenuOpen(false)}
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link 
+                        to={link.path} 
+                        className={`nav-link ${isActive(link.path) ? 'active' : ''}`}
+                        onClick={() => setMenuOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                    )}
+                  </li>
+                ))}
               </ul>
             </div>
           )}
@@ -80,31 +77,25 @@ const Navigation: React.FC = () => {
       ) : (
         <div className="backdrop-blur-md bg-white/60 rounded-full px-6 py-3 shadow-lg">
           <ul className="flex space-x-4 sm:space-x-8">
-            <li>
-              <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/profile" className={`nav-link ${location.pathname === '/profile' ? 'active' : ''}`}>
-                Profile
-              </Link>
-            </li>
-            <li>
-              <Link to="/hobbies" className={`nav-link ${location.pathname === '/hobbies' ? 'active' : ''}`}>
-                Hobbies
-              </Link>
-            </li>
-            <li>
-              <Link to="/gallery" className={`nav-link ${location.pathname === '/gallery' ? 'active' : ''}`}>
-                Gallery
-              </Link>
-            </li>
-            <li>
-              <Link to="/contact" className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`}>
-                Contact
-              </Link>
-            </li>
+            {navLinks.map((link, index) => (
+              <li key={index}>
+                {isStaticHtml ? (
+                  <a 
+                    href={link.path} 
+                    className={`nav-link ${window.location.pathname.endsWith(link.path.split('/').pop() || '') ? 'active' : ''}`}
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link 
+                    to={link.path} 
+                    className={`nav-link ${isActive(link.path) ? 'active' : ''}`}
+                  >
+                    {link.label}
+                  </Link>
+                )}
+              </li>
+            ))}
           </ul>
         </div>
       )}
