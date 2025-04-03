@@ -35,28 +35,28 @@ const Profile = () => {
               <div className="space-y-6">
                 <div>
                   <h2 className="text-3xl font-dancing text-impression-purple mb-1">Name</h2>
-                  <p className="text-xl">Oceana Viktoria S. Nebre</p>
+                  <p className="text-xl font-source-sans">Oceana Viktoria S. Nebre</p>
                 </div>
                 
                 <div>
                   <h2 className="text-3xl font-dancing text-impression-yellow mb-1">Age</h2>
-                  <p className="text-xl">15</p>
+                  <p className="text-xl font-source-sans">15</p>
                 </div>
                 
                 <div>
                   <h2 className="text-3xl font-dancing text-impression-blue mb-1">Occupation</h2>
-                  <p className="text-xl">Student / Digital Artist / Web Developer</p>
+                  <p className="text-xl font-source-sans">Student / Digital Artist / Web Developer</p>
                 </div>
                 
                 <div>
                   <h2 className="text-3xl font-dancing text-impression-orange mb-1">Education</h2>
-                  <p className="text-xl">San Beda College Alabang</p>
+                  <p className="text-xl font-source-sans">San Beda College Alabang</p>
                 </div>
               </div>
               
-              <div className="mt-8 p-4 bg-gradient-canvas bg-opacity-50 rounded-lg shadow-inner">
+              <div className="mt-8 p-6 bg-gradient-to-br from-white via-[#f0f4f8] to-[#e6f1ff] rounded-lg shadow-inner">
                 <h3 className="text-2xl font-dancing text-impression-purple mb-2">About Me</h3>
-                <p className="text-lg leading-relaxed">
+                <p className="text-lg leading-relaxed font-source-sans text-gray-700">
                   I'm a passionate student with a love for digital art and web development. 
                   Drawing inspiration from impressionist masters like Monet and Van Gogh, 
                   I blend traditional artistic styles with modern digital techniques to create 

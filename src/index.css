@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -55,11 +54,11 @@
   
   body {
     @apply bg-background text-foreground font-serif overflow-x-hidden;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Source Sans 3', sans-serif;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Playfair Display', serif;
   }
   
   p, span, a, li {
@@ -269,4 +268,12 @@
   opacity: 0.2;
   z-index: -1;
   pointer-events: none;
+}
+
+.font-source-sans {
+  font-family: 'Source Sans 3', sans-serif;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
 }

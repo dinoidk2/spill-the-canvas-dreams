@@ -72,9 +72,9 @@ const Contact = () => {
                 </div>
               </div>
               
-              <div className="p-6 bg-gradient-yellow bg-opacity-30 rounded-xl shadow-inner">
-                <h2 className="text-3xl font-dancing text-impression-orange mb-3">Let's Connect!</h2>
-                <p className="text-lg">
+              <div className="p-6 bg-gradient-to-br from-white via-[#f0f4f8] to-[#e6f1ff] rounded-xl shadow-inner">
+                <h2 className="text-3xl font-dancing text-impression-purple mb-3">Let's Connect!</h2>
+                <p className="text-lg text-gray-700">
                   I'm always interested in new opportunities, collaborations, or just chatting about art and web development!
                   Feel free to reach out through any of the channels above.
                 </p>
