@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oceana Viktoria - Contact</title>
+    <meta name="description" content="Contact Oceana Viktoria S. Nebre" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Navigation -->
+      <nav class="navigation">
+        <div class="nav-container">
+          <ul class="nav-links">
+            <li><a href="./home.html" class="nav-link">Home</a></li>
+            <li><a href="./profile.html" class="nav-link">Profile</a></li>
+            <li><a href="./hobbies.html" class="nav-link">Hobbies</a></li>
+            <li><a href="./gallery.html" class="nav-link">Gallery</a></li>
+            <li><a href="./contact.html" class="nav-link active">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Mobile Navigation -->
+      <nav class="mobile-navigation">
+        <button class="menu-toggle" id="menuToggle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <div class="mobile-menu" id="mobileMenu">
+          <ul class="mobile-nav-links">
+            <li><a href="./home.html" class="nav-link">Home</a></li>
+            <li><a href="./profile.html" class="nav-link">Profile</a></li>
+            <li><a href="./hobbies.html" class="nav-link">Hobbies</a></li>
+            <li><a href="./gallery.html" class="nav-link">Gallery</a></li>
+            <li><a href="./contact.html" class="nav-link active">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="contact-page">
+        <div class="background-elements">
+          <div class="bg-element bg-yellow"></div>
+          <div class="bg-element bg-purple"></div>
+          <div class="bg-element bg-pink"></div>
+        </div>
+        
+        <div class="content-container">
+          <div class="paint-card">
+            <div class="contact-content">
+              <h1 class="section-title">
+                <span class="brush-stroke brush-stroke-purple">Contact Me</span>
+              </h1>
+              
+              <p class="section-description">
+                Have a question or want to collaborate? Reach out to me using the contact information below!
+              </p>
+              
+              <div class="connect-container">
+                <h2 class="connect-heading">Let's Connect</h2>
+                
+                <div class="contact-info-grid">
+                  <div class="contact-card email-card">
+                    <h3 class="contact-type">Email</h3>
+                    <div class="copyable-info">
+                      <p class="contact-value" id="emailValue">oceanaviktorial@gmail.com</p>
+                      <button class="copy-btn" data-copy="emailValue">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      </button>
+                    </div>
+                  </div>
+                  
+                  <div class="contact-card social-card">
+                    <h3 class="contact-type">Social Media</h3>
+                    <div class="copyable-info">
+                      <p class="contact-value" id="socialValue">@oceanaviktoria.nebre</p>
+                      <button class="copy-btn" data-copy="socialValue">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="message-form">
+                  <h3 class="form-heading">Send Me a Message</h3>
+                  <form id="contactForm">
+                    <div class="form-group">
+                      <label for="name">Your Name</label>
+                      <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="email">Your Email</label>
+                      <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="message">Your Message</label>
+                      <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div class="toast" id="copyToast">Text copied to clipboard!</div>
+    <script src="./scripts.js"></script>
+  </body>
+</html>

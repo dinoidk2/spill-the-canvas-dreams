@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oceana Viktoria - Hobbies</title>
+    <meta name="description" content="Hobbies of Oceana Viktoria S. Nebre" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Navigation -->
+      <nav class="navigation">
+        <div class="nav-container">
+          <ul class="nav-links">
+            <li><a href="./home.html" class="nav-link">Home</a></li>
+            <li><a href="./profile.html" class="nav-link">Profile</a></li>
+            <li><a href="./hobbies.html" class="nav-link active">Hobbies</a></li>
+            <li><a href="./gallery.html" class="nav-link">Gallery</a></li>
+            <li><a href="./contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Mobile Navigation -->
+      <nav class="mobile-navigation">
+        <button class="menu-toggle" id="menuToggle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <div class="mobile-menu" id="mobileMenu">
+          <ul class="mobile-nav-links">
+            <li><a href="./home.html" class="nav-link">Home</a></li>
+            <li><a href="./profile.html" class="nav-link">Profile</a></li>
+            <li><a href="./hobbies.html" class="nav-link active">Hobbies</a></li>
+            <li><a href="./gallery.html" class="nav-link">Gallery</a></li>
+            <li><a href="./contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="hobbies-page">
+        <div class="background-elements">
+          <div class="bg-element bg-yellow"></div>
+          <div class="bg-element bg-green"></div>
+        </div>
+        
+        <div class="content-container">
+          <div class="paint-card">
+            <div class="hobbies-content">
+              <h1 class="section-title">
+                <span class="brush-stroke brush-stroke-purple">My Hobbies</span>
+              </h1>
+              
+              <p class="section-description">
+                Explore my creative passions and interests through this interactive gallery.
+                Click on any image to learn more!
+              </p>
+              
+              <!-- Filter buttons -->
+              <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="art">Art</button>
+                <button class="filter-btn" data-filter="reading">Reading</button>
+              </div>
+              
+              <!-- Gallery grid -->
+              <div class="gallery-grid">
+                <div class="gallery-item" data-category="art">
+                  <div class="gallery-image-container">
+                    <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&auto=format&fit=crop" alt="Drawing" class="gallery-image" />
+                    <div class="gallery-overlay">
+                      <h3 class="gallery-title">Drawing</h3>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="gallery-item" data-category="art">
+                  <div class="gallery-image-container">
+                    <img src="https://images.unsplash.com/photo-1541753866388-0b3c701627d3?w=800&auto=format&fit=crop" alt="Painting" class="gallery-image" />
+                    <div class="gallery-overlay">
+                      <h3 class="gallery-title">Painting</h3>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="gallery-item" data-category="reading">
+                  <div class="gallery-image-container">
+                    <img src="https://images.unsplash.com/photo-1535016120720-40c646be5580?w=800&auto=format&fit=crop" alt="Reading Manga" class="gallery-image" />
+                    <div class="gallery-overlay">
+                      <h3 class="gallery-title">Reading Manga</h3>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="gallery-item" data-category="reading">
+                  <div class="gallery-image-container">
+                    <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=800&auto=format&fit=crop" alt="Reading Manhwa" class="gallery-image" />
+                    <div class="gallery-overlay">
+                      <h3 class="gallery-title">Reading Manhwa</h3>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="gallery-item" data-category="reading">
+                  <div class="gallery-image-container">
+                    <img src="https://images.unsplash.com/photo-1604580864964-0462f5d5b1a8?w=800&auto=format&fit=crop" alt="Reading Manhua" class="gallery-image" />
+                    <div class="gallery-overlay">
+                      <h3 class="gallery-title">Reading Manhua</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Modal template (will be populated via JavaScript) -->
+              <div class="modal-container" id="hobbyModal">
+                <div class="modal-content">
+                  <button class="modal-close">&times;</button>
+                  <div class="modal-body">
+                    <div class="modal-image-container">
+                      <img src="" alt="" class="modal-image" id="modalImage">
+                    </div>
+                    <div class="modal-info">
+                      <h3 class="modal-title" id="modalTitle"></h3>
+                      <p class="modal-description" id="modalDescription"></p>
+                      
+                      <div class="modal-extra-info">
+                        <h4>Why I love it</h4>
+                        <p>This hobby allows me to express my creativity and provides a wonderful
+                        escape into imagination. It's both challenging and relaxing!</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="./scripts.js"></script>
+  </body>
+</html>

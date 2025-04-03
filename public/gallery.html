@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oceana Viktoria - Gallery</title>
+    <meta name="description" content="Art Gallery of Oceana Viktoria S. Nebre" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Navigation -->
+      <nav class="navigation">
+        <div class="nav-container">
+          <ul class="nav-links">
+            <li><a href="./home.html" class="nav-link">Home</a></li>
+            <li><a href="./profile.html" class="nav-link">Profile</a></li>
+            <li><a href="./hobbies.html" class="nav-link">Hobbies</a></li>
+            <li><a href="./gallery.html" class="nav-link active">Gallery</a></li>
+            <li><a href="./contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Mobile Navigation -->
+      <nav class="mobile-navigation">
+        <button class="menu-toggle" id="menuToggle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <div class="mobile-menu" id="mobileMenu">
+          <ul class="mobile-nav-links">
+            <li><a href="./home.html" class="nav-link">Home</a></li>
+            <li><a href="./profile.html" class="nav-link">Profile</a></li>
+            <li><a href="./hobbies.html" class="nav-link">Hobbies</a></li>
+            <li><a href="./gallery.html" class="nav-link active">Gallery</a></li>
+            <li><a href="./contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="gallery-page">
+        <div class="background-elements">
+          <div class="bg-element bg-pink"></div>
+          <div class="bg-element bg-blue"></div>
+        </div>
+        
+        <div class="content-container">
+          <div class="paint-card">
+            <div class="gallery-content">
+              <h1 class="section-title">
+                <span class="brush-stroke brush-stroke-blue">My Gallery</span>
+              </h1>
+              
+              <p class="section-description">
+                A collection of my artistic works and creative expressions.
+                Click on any image to view details!
+              </p>
+              
+              <!-- Gallery grid -->
+              <div class="gallery-grid">
+                <div class="gallery-item">
+                  <div class="gallery-image-container">
+                    <img src="https://images.unsplash.com/photo-1579541591969-96baa433f545?w=800&auto=format&fit=crop" alt="Impressionist Sunset" class="gallery-image" />
+                    <div class="gallery-overlay">
+                      <h3 class="gallery-title">Impressionist Sunset</h3>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="gallery-item">
+                  <div class="gallery-image-container">
+                    <img src="https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?w=800&auto=format&fit=crop" alt="Abstract Emotions" class="gallery-image" />
+                    <div class="gallery-overlay">
+                      <h3 class="gallery-title">Abstract Emotions</h3>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="gallery-item">
+                  <div class="gallery-image-container">
+                    <img src="https://images.unsplash.com/photo-1552160793-cbae0e200ce9?w=800&auto=format&fit=crop" alt="Nature's Whisper" class="gallery-image" />
+                    <div class="gallery-overlay">
+                      <h3 class="gallery-title">Nature's Whisper</h3>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="gallery-item">
+                  <div class="gallery-image-container">
+                    <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=800&auto=format&fit=crop" alt="Vibrant Dreams" class="gallery-image" />
+                    <div class="gallery-overlay">
+                      <h3 class="gallery-title">Vibrant Dreams</h3>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="gallery-item">
+                  <div class="gallery-image-container">
+                    <img src="https://images.unsplash.com/photo-1574610664346-311a39e1a179?w=800&auto=format&fit=crop" alt="Urban Symphony" class="gallery-image" />
+                    <div class="gallery-overlay">
+                      <h3 class="gallery-title">Urban Symphony</h3>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="gallery-item">
+                  <div class="gallery-image-container">
+                    <img src="https://images.unsplash.com/photo-1598839949930-48e9e039f8eb?w=800&auto=format&fit=crop" alt="Peaceful Solitude" class="gallery-image" />
+                    <div class="gallery-overlay">
+                      <h3 class="gallery-title">Peaceful Solitude</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Modal template (will be populated via JavaScript) -->
+              <div class="modal-container" id="artworkModal">
+                <div class="modal-content">
+                  <button class="modal-close">&times;</button>
+                  <div class="modal-body">
+                    <div class="modal-image-container">
+                      <img src="" alt="" class="modal-image" id="artModalImage">
+                    </div>
+                    <div class="modal-info">
+                      <h3 class="modal-title" id="artModalTitle"></h3>
+                      
+                      <div class="modal-info-grid">
+                        <div class="modal-info-card">
+                          <h4>Technique</h4>
+                          <p id="artModalTechnique"></p>
+                        </div>
+                        
+                        <div class="modal-info-card">
+                          <h4>Year</h4>
+                          <p id="artModalYear"></p>
+                        </div>
+                        
+                        <div class="modal-info-card">
+                          <h4>Artist's Note</h4>
+                          <p>This piece represents my exploration of colors and emotions, 
+                          inspired by the impressionist techniques of Monet and Van Gogh.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="./scripts.js"></script>
+  </body>
+</html>

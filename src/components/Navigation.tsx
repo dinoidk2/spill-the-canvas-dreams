@@ -18,16 +18,16 @@ const Navigation: React.FC = () => {
         <div className="relative">
           <button 
             onClick={toggleMenu}
-            className="backdrop-blur-md bg-white/60 rounded-full p-3 shadow-lg"
+            className="backdrop-blur-md bg-white/60 rounded-full p-2 shadow-lg"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
           </button>
           
           {menuOpen && (
-            <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 backdrop-blur-md bg-white/90 rounded-xl p-4 shadow-lg min-w-48">
-              <ul className="flex flex-col space-y-3">
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 backdrop-blur-md bg-white/90 rounded-xl p-4 shadow-lg min-w-32">
+              <ul className="flex flex-col space-y-2">
                 <li>
                   <Link 
                     to="/" 
@@ -53,6 +53,15 @@ const Navigation: React.FC = () => {
                     onClick={() => setMenuOpen(false)}
                   >
                     Hobbies
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/gallery" 
+                    className={`nav-link ${location.pathname === '/gallery' ? 'active' : ''}`}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Gallery
                   </Link>
                 </li>
                 <li>
@@ -84,6 +93,11 @@ const Navigation: React.FC = () => {
             <li>
               <Link to="/hobbies" className={`nav-link ${location.pathname === '/hobbies' ? 'active' : ''}`}>
                 Hobbies
+              </Link>
+            </li>
+            <li>
+              <Link to="/gallery" className={`nav-link ${location.pathname === '/gallery' ? 'active' : ''}`}>
+                Gallery
               </Link>
             </li>
             <li>
