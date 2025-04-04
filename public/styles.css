@@ -27,12 +27,17 @@
   --font-sans: 'Source Sans 3', sans-serif;
   --font-serif: 'Playfair Display', serif;
   --font-script: 'Dancing Script', cursive;
+  --font-mono: 'Roboto Mono', monospace;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -50,6 +55,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   margin-bottom: 1rem;
+  font-family: var(--font-sans);
 }
 
 a {
@@ -83,6 +89,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.3s ease;
 }
 
 .nav-container {
@@ -165,6 +172,7 @@ button {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   min-width: 8rem;
   display: none;
+  animation: fadeIn 0.3s ease-out;
 }
 
 .mobile-menu.visible {
@@ -176,6 +184,22 @@ button {
   flex-direction: column;
   gap: 0.5rem;
   list-style: none;
+}
+
+.mobile-nav-links .nav-link {
+  padding: 0.5rem 0.75rem;
+  text-align: center;
+  display: block;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.mobile-nav-links .nav-link:hover {
+  background-color: rgba(155, 135, 245, 0.1);
+}
+
+.mobile-nav-links .nav-link.active {
+  background-color: rgba(155, 135, 245, 0.2);
 }
 
 /* Background Elements */
@@ -284,6 +308,10 @@ button {
   background-image: url("data:image/svg+xml,%3Csvg width='200' height='10' viewBox='0 0 200 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 5C50 -1 150 11 200 5' stroke='%236BAED9' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
+.brush-stroke-pink::after {
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='10' viewBox='0 0 200 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 5C50 -1 150 11 200 5' stroke='%23FEC6D6' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
 /* Paint Border */
 .paint-border {
   position: relative;
@@ -330,7 +358,8 @@ button {
   font-size: 1.5rem;
   font-weight: 400;
   text-align: center;
-  color: var(--impression-purple);
+  color: var(--foreground);
+  font-family: var(--font-mono);
 }
 
 .description {
@@ -378,6 +407,18 @@ button {
   height: 100%;
   object-fit: cover;
   mix-blend-mode: overlay;
+}
+
+.about-me-content {
+  max-width: 36rem;
+  text-align: center;
+}
+
+.about-me-content p {
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #4a4a4a;
 }
 
 .navigation-grid {
@@ -467,18 +508,26 @@ button {
 }
 
 .info-card {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(4px);
   border-radius: 0.75rem;
   padding: 1.5rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.5);
-  background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(240, 249, 255, 0.8));
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
 }
 
 .info-title {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
   color: var(--impression-purple);
+  border-bottom: 1px solid rgba(155, 135, 245, 0.2);
+  padding-bottom: 0.5rem;
 }
 
 .info-value {
@@ -497,12 +546,24 @@ button {
 }
 
 .about-content {
-  background-color: white;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(240, 249, 255, 0.8));
   border-radius: 0.75rem;
   padding: 2rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.5);
-  background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(240, 249, 255, 0.8));
+  position: relative;
+  overflow: hidden;
+}
+
+.about-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, var(--impression-blue), var(--impression-purple), var(--impression-pink));
+  opacity: 0.3;
 }
 
 /* Hobbies Page */
@@ -515,6 +576,7 @@ button {
   justify-content: center;
   gap: 1rem;
   margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 
 .filter-btn {
@@ -595,7 +657,7 @@ button {
   color: white;
   text-align: center;
   padding: 1rem;
-  font-family: var(--font-serif);
+  font-family: var(--font-playfair);
   font-size: 1.5rem;
   transform: translateY(10px);
   transition: transform 0.3s ease;
@@ -624,6 +686,7 @@ button {
 
 .modal-container.visible {
   display: flex;
+  animation: fadeIn 0.3s ease-out;
 }
 
 .modal-content {
@@ -634,6 +697,7 @@ button {
   width: 100%;
   position: relative;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: scaleIn 0.3s ease-out;
 }
 
 .modal-close {
@@ -754,23 +818,34 @@ button {
   background-color: white;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.contact-card:hover {
+  transform: translateY(-3px);
 }
 
 .contact-type {
   font-size: 1.25rem;
   margin-bottom: 0.75rem;
   color: var(--impression-purple);
+  border-bottom: 1px solid rgba(155, 135, 245, 0.2);
+  padding-bottom: 0.5rem;
 }
 
 .copyable-info {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .contact-value {
   font-size: 1.125rem;
   margin-bottom: 0;
+  word-break: break-all;
 }
 
 .copy-btn {
@@ -899,6 +974,48 @@ button {
   }
 }
 
+/* Page animations */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes float-reverse {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(15px); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.2; }
+}
+
+.animate-float-slow {
+  animation: float-slow 15s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 18s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 10s ease-in-out infinite;
+}
+
 /* Media Queries */
 @media (max-width: 1024px) {
   .section-title {
@@ -951,6 +1068,10 @@ button {
   .gallery-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
+  
+  .info-card {
+    padding: 1rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -973,5 +1094,14 @@ button {
   
   .paint-card {
     padding: 1rem;
+  }
+  
+  .contact-info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .copyable-info {
+    flex-direction: column;
+    align-items: center;
   }
 }

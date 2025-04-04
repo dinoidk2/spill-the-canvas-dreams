@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   </head>
   <body>
     <div class="app-container">
@@ -28,7 +28,7 @@
 
       <!-- Mobile Navigation -->
       <nav class="mobile-navigation">
-        <button class="menu-toggle" id="menuToggle">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
         </button>
         <div class="mobile-menu" id="mobileMenu">
@@ -43,11 +43,12 @@
       </nav>
 
       <!-- Main Content -->
-      <main class="home-page">
+      <main class="home-page animate-fade-in">
         <div class="background-elements">
-          <div class="bg-element bg-yellow"></div>
-          <div class="bg-element bg-purple"></div>
-          <div class="bg-element bg-blue"></div>
+          <div class="bg-element bg-yellow animate-float-slow"></div>
+          <div class="bg-element bg-purple animate-float-reverse"></div>
+          <div class="bg-element bg-blue animate-pulse-slow"></div>
+          <div class="bg-element bg-pink animate-float-slow"></div>
         </div>
         
         <div class="content-container">
@@ -59,7 +60,7 @@
                 <span class="brush-stroke brush-stroke-purple">Canvas Dreams</span>
               </h1>
               
-              <h2 class="subtitle">
+              <h2 class="subtitle font-mono text-black">
                 Oceana Viktoria S. Nebre
               </h2>
               
@@ -71,6 +72,11 @@
                 <div class="profile-image-wrapper">
                   <img src="https://images.unsplash.com/photo-1500673922987-e212871fec22" alt="Artistic impression" class="profile-image" />
                 </div>
+              </div>
+              
+              <div class="about-me-content">
+                <p>I'm a student, digital artist, and web developer with a love for thoughtful design and creative expression. This space is a collection of the work I'm building, the art I'm making, and the ideas I'm exploring.</p>
+                <p>This is a space where I share my work, ideas, and interests — from student leadership projects to creative explorations in drawing, painting, and storytelling.</p>
               </div>
               
               <div class="navigation-grid">

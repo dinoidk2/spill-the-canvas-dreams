@@ -14,27 +14,25 @@ import NotFound from "./pages/NotFound";
 import Navigation from "./components/Navigation";
 import CursorTrail from "./components/CursorTrail";
 import BrushStrokes from "./components/BrushStrokes";
+import AnimatedPageTransition from "./components/AnimatedPageTransition";
 
 const queryClient = new QueryClient();
 
 // Check if we're running in the browser environment
 const isBrowser = typeof window !== 'undefined';
 
-// If we're running in a static HTML environment, don't render the React app
-if (isBrowser && window.location.pathname.endsWith('.html')) {
-  console.log('Running in static HTML mode, not initializing React app');
-  // Don't render the React app
-} else {
-  const App = () => (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <div className="app-container">
-            <BrushStrokes />
-            <CursorTrail />
-            <Navigation />
+// Define the App component - moved outside the conditional
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <div className="app-container">
+          <BrushStrokes />
+          <CursorTrail />
+          <Navigation />
+          <AnimatedPageTransition>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/profile" element={<Profile />} />
@@ -43,11 +41,18 @@ if (isBrowser && window.location.pathname.endsWith('.html')) {
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </div>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
-  );
+          </AnimatedPageTransition>
+        </div>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
 
+// If we're running in a static HTML environment, don't render the React app
+if (isBrowser && window.location.pathname.endsWith('.html')) {
+  console.log('Running in static HTML mode, not initializing React app');
+  // Don't render the React app
+} else {
+  // Export the App component for normal React rendering
   export default App;
 }

@@ -75,28 +75,23 @@ document.addEventListener("DOMContentLoaded", function() {
     const hobbiesData = [
       {
         name: 'Drawing',
-        description: 'Creating artwork with pencils, charcoal, and digital tools.',
+        description: 'Creating artwork with pencils, charcoal, and digital tools. Drawing allows me to express my thoughts and emotions in visual form, capturing moments and ideas with simple lines and shapes.',
         image: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&auto=format&fit=crop'
       },
       {
         name: 'Painting',
-        description: 'Expressing myself through colors, brushstrokes, and canvas.',
+        description: 'I dabble in gouache, watercolor, and digital painting. Each medium offers its own unique qualities that allow me to explore color, texture, and emotion in different ways.',
         image: 'https://images.unsplash.com/photo-1541753866388-0b3c701627d3?w=800&auto=format&fit=crop'
       },
       {
-        name: 'Reading Manga',
-        description: 'Exploring Japanese comic books and graphic novels.',
+        name: 'Reading',
+        description: 'Reading transports me to different worlds and perspectives. I enjoy diving into stories that challenge my thinking and expand my understanding of human experience and emotion.',
         image: 'https://images.unsplash.com/photo-1535016120720-40c646be5580?w=800&auto=format&fit=crop'
       },
       {
-        name: 'Reading Manhwa',
-        description: 'Diving into Korean comics and their unique storytelling style.',
-        image: 'https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=800&auto=format&fit=crop'
-      },
-      {
-        name: 'Reading Manhua',
-        description: 'Enjoying Chinese comics with their distinctive artistic approach.',
-        image: 'https://images.unsplash.com/photo-1604580864964-0462f5d5b1a8?w=800&auto=format&fit=crop'
+        name: 'Watching',
+        description: 'I love immersing myself in animated series and shows that combine beautiful visuals with compelling storytelling. These media inspire my own artistic journey and creative thinking.',
+        image: 'https://images.unsplash.com/photo-1578022761797-b8636ac1773c?w=800&auto=format&fit=crop'
       }
     ];
     
@@ -116,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     
     // Close modal
-    const closeButton = hobbyModal.querySelector('.modal-close');
+    const closeButton = hobbyModal?.querySelector('.modal-close');
     if (closeButton) {
       closeButton.addEventListener('click', () => {
         hobbyModal.classList.remove('visible');
@@ -124,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     
     // Close modal when clicking outside content
-    hobbyModal.addEventListener('click', (e) => {
+    hobbyModal?.addEventListener('click', (e) => {
       if (e.target === hobbyModal) {
         hobbyModal.classList.remove('visible');
       }
@@ -242,70 +237,81 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
   
-  // Cursor Trail Effect
+  // Enhanced Cursor Trail Effect for static HTML mode
+  let positions = [];
+  const colors = ['#9B87F5', '#FFD166', '#6BAED9', '#7ECBA1', '#FEC6D6', '#FFA07A'];
+  let lastPosition = { x: 0, y: 0, time: Date.now() };
+  
+  // Create cursor dot
   const cursorDot = document.createElement('div');
   cursorDot.className = 'cursor-dot';
   document.body.appendChild(cursorDot);
   
-  let mouseX = 0;
-  let mouseY = 0;
-  
   document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    // Update main cursor dot
+    const scrollX = window.pageXOffset || document.documentElement.scrollLeft;
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+    
+    const cursorX = e.clientX + scrollX;
+    const cursorY = e.clientY + scrollY;
     
     cursorDot.style.opacity = '1';
-    cursorDot.style.left = mouseX + 'px';
-    cursorDot.style.top = mouseY + 'px';
+    cursorDot.style.left = e.clientX + 'px';
+    cursorDot.style.top = e.clientY + 'px';
+    
+    const now = Date.now();
+    
+    // Add trail dots based on movement or time
+    if (
+      Math.abs(cursorX - lastPosition.x) > 10 || 
+      Math.abs(cursorY - lastPosition.y) > 10 ||
+      now - lastPosition.time > 100
+    ) {
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      
+      // Create a trail dot
+      const trail = document.createElement('div');
+      trail.className = 'cursor-trail';
+      trail.style.left = (cursorX - 7.5) + 'px';
+      trail.style.top = (cursorY - 7.5) + 'px';
+      trail.style.backgroundColor = randomColor;
+      document.body.appendChild(trail);
+      
+      // Store position data
+      positions.push({
+        element: trail,
+        id: now,
+        x: cursorX,
+        y: cursorY
+      });
+      
+      lastPosition = { x: cursorX, y: cursorY, time: now };
+    }
+    
+    // Limit the number of trail elements
+    if (positions.length > 50) {
+      const oldestDot = positions.shift();
+      if (oldestDot && oldestDot.element && oldestDot.element.parentNode) {
+        oldestDot.element.parentNode.removeChild(oldestDot.element);
+      }
+    }
   });
   
   document.addEventListener('mouseout', () => {
     cursorDot.style.opacity = '0';
   });
   
-  // Click Trail Effect
-  document.addEventListener('click', (e) => {
-    const colors = [
-      'rgba(155, 135, 245, 0.6)',  // Purple
-      'rgba(107, 174, 217, 0.6)',  // Blue
-      'rgba(255, 209, 102, 0.6)',  // Yellow
-      'rgba(254, 198, 214, 0.6)'   // Pink
-    ];
-    
-    for (let i = 0; i < 5; i++) {
-      const trail = document.createElement('div');
-      trail.className = 'cursor-trail';
-      trail.style.left = (mouseX - 7.5) + 'px';
-      trail.style.top = (mouseY - 7.5) + 'px';
-      trail.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-      
-      const size = Math.random() * 20 + 10;
-      trail.style.width = size + 'px';
-      trail.style.height = size + 'px';
-      
-      const angle = Math.random() * Math.PI * 2;
-      const distance = Math.random() * 90 + 10;
-      const velocityX = Math.cos(angle) * distance;
-      const velocityY = Math.sin(angle) * distance;
-      
-      document.body.appendChild(trail);
-      
-      let posX = mouseX;
-      let posY = mouseY;
-      
-      const animate = () => {
-        posX += velocityX / 10;
-        posY += velocityY / 10;
-        trail.style.left = (posX - size/2) + 'px';
-        trail.style.top = (posY - size/2) + 'px';
-      };
-      
-      const intervalId = setInterval(animate, 20);
-      
-      setTimeout(() => {
-        clearInterval(intervalId);
-        document.body.removeChild(trail);
-      }, 1000);
-    }
+  document.addEventListener('mouseenter', () => {
+    cursorDot.style.opacity = '1';
   });
+  
+  // Clean up trails periodically
+  setInterval(() => {
+    if (positions.length > 0) {
+      const oldestDot = positions.shift();
+      if (oldestDot && oldestDot.element && oldestDot.element.parentNode) {
+        oldestDot.element.parentNode.removeChild(oldestDot.element);
+      }
+    }
+  }, 50);
 });

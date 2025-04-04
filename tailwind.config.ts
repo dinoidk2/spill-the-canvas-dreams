@@ -103,6 +103,27 @@ export default {
           "75%": { transform: "rotate(-3deg)" },
           "100%": { transform: "rotate(0deg)" },
         },
+        "float-slow": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-15px)" },
+        },
+        "float-reverse": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(15px)" },
+        },
+        "pulse-slow": {
+          "0%, 100%": { opacity: "0.1" },
+          "50%": { opacity: "0.2" },
+        },
+        "spin-slow": {
+          "0%": { transform: "translate(-50%, -50%) rotate(0deg) scale(1)", opacity: "0.03" },
+          "50%": { transform: "translate(-50%, -50%) rotate(180deg) scale(1.1)", opacity: "0.05" },
+          "100%": { transform: "translate(-50%, -50%) rotate(360deg) scale(1)", opacity: "0.03" },
+        },
+        "fade-in": {
+          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -110,12 +131,23 @@ export default {
         "paint-float": "paint-float 6s ease-in-out infinite",
         "paint-pulse": "paint-pulse 4s ease-in-out infinite",
         "brush-rotate": "brush-rotate 7s ease-in-out infinite",
+        "float-slow": "float-slow 15s ease-in-out infinite",
+        "float-reverse": "float-reverse 18s ease-in-out infinite",
+        "pulse-slow": "pulse-slow 10s ease-in-out infinite",
+        "spin-slow": "spin-slow 60s linear infinite",
+        "fade-in": "fade-in 0.5s ease-out forwards",
       },
       backgroundImage: {
         "gradient-canvas": "linear-gradient(to right, #accbee 0%, #e7f0fd 100%)",
         "gradient-sunset": "linear-gradient(to right, #ffc3a0 0%, #ffafbd 100%)",
         "gradient-purple": "linear-gradient(102.3deg, rgba(147,39,143,1) 5.9%, rgba(234,172,232,1) 64%, rgba(246,219,245,1) 89%)",
         "gradient-yellow": "linear-gradient(184.1deg, rgba(249,255,182,1) 44.7%, rgba(226,255,172,1) 67.2%)",
+      },
+      fontFamily: {
+        'mono': ['Roboto Mono', 'monospace'],
+        'playfair': ['Playfair Display', 'serif'],
+        'source-sans': ['Source Sans 3', 'sans-serif'],
+        'dancing': ['Dancing Script', 'cursive'],
       },
     },
   },
