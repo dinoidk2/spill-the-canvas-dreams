@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&family=Roboto+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&family=Roboto+Mono:wght@400;500&family=Caveat:wght@400;700&family=Nunito:wght@300;400;600;700&display=swap');
 
 @layer base {
   :root {
@@ -58,8 +58,12 @@
   }
   
   body {
-    @apply bg-background text-foreground font-serif overflow-x-hidden;
-    font-family: 'Source Sans 3', sans-serif;
+    @apply bg-background text-foreground overflow-x-hidden;
+    font-family: 'Source Sans 3', 'Nunito', sans-serif;
+    background-image: 
+      radial-gradient(circle at 85% 25%, rgba(155, 135, 245, 0.04) 0%, transparent 35%),
+      radial-gradient(circle at 15% 75%, rgba(254, 198, 214, 0.04) 0%, transparent 35%),
+      radial-gradient(circle at 50% 50%, rgba(107, 174, 217, 0.03) 0%, transparent 50%);
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -67,7 +71,7 @@
   }
   
   p, span, a, li {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans 3', 'Nunito', sans-serif;
   }
 }
 
@@ -82,43 +86,47 @@
     position: absolute;
     bottom: -5px;
     left: 0;
-    height: 10px;
+    height: 12px;
     width: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg width='200' height='10' viewBox='0 0 200 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 5C50 -1 150 11 200 5' stroke='%23FFD166' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='200' height='12' viewBox='0 0 200 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 6C40 1.5 70 10.5 100 6C130 1.5 160 10.5 200 6' stroke='%23FFD166' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    animation: brush-wave 8s ease-in-out infinite;
   }
   
   .brush-stroke-purple:after {
-    background-image: url("data:image/svg+xml,%3Csvg width='200' height='10' viewBox='0 0 200 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 5C50 -1 150 11 200 5' stroke='%239B87F5' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='200' height='12' viewBox='0 0 200 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 6C40 1.5 70 10.5 100 6C130 1.5 160 10.5 200 6' stroke='%239B87F5' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
   }
   
   .brush-stroke-blue:after {
-    background-image: url("data:image/svg+xml,%3Csvg width='200' height='10' viewBox='0 0 200 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 5C50 -1 150 11 200 5' stroke='%236BAED9' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='200' height='12' viewBox='0 0 200 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 6C40 1.5 70 10.5 100 6C130 1.5 160 10.5 200 6' stroke='%236BAED9' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
   }
 
   .brush-stroke-pink:after {
-    background-image: url("data:image/svg+xml,%3Csvg width='200' height='10' viewBox='0 0 200 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 5C50 -1 150 11 200 5' stroke='%23FEC6D6' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='200' height='12' viewBox='0 0 200 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 6C40 1.5 70 10.5 100 6C130 1.5 160 10.5 200 6' stroke='%23FEC6D6' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
   }
   
   .paint-card {
     position: relative;
     z-index: 1;
-    @apply bg-white bg-opacity-80 rounded-xl p-6 sm:p-8 backdrop-blur-sm transition-all duration-300;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    @apply bg-white bg-opacity-90 rounded-xl p-6 sm:p-8 backdrop-blur-sm transition-all duration-300;
+    box-shadow: 
+      0 8px 20px rgba(0, 0, 0, 0.08),
+      0 0 0 1px rgba(255, 255, 255, 0.8) inset;
   }
   
   .paint-card:before {
     content: '';
     position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
     z-index: -1;
     border-radius: inherit;
-    @apply bg-gradient-sunset opacity-30;
-    transform: rotate(-1deg);
+    @apply bg-gradient-sunset opacity-40;
+    transform: rotate(-0.5deg);
+    filter: blur(5px);
   }
   
   .paint-border {
@@ -148,7 +156,7 @@
   }
 
   .gallery-overlay {
-    @apply absolute inset-0 bg-gradient-to-t from-impression-purple/80 via-impression-blue/60 to-transparent flex items-center justify-center opacity-0 transition-all duration-300;
+    @apply absolute inset-0 bg-gradient-to-t from-impression-purple/80 via-impression-blue/60 to-transparent flex items-end p-4 opacity-0 transition-all duration-300;
   }
 
   .gallery-item:hover .gallery-overlay {
@@ -156,7 +164,7 @@
   }
 
   .gallery-title {
-    @apply font-playfair text-2xl text-white drop-shadow-md transform translate-y-4 transition-transform duration-300;
+    @apply font-dancing text-3xl text-white drop-shadow-md transform translate-y-4 transition-transform duration-300;
   }
 
   .gallery-item:hover .gallery-title {
@@ -168,11 +176,15 @@
   }
 
   .font-source-sans {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans 3', 'Nunito', sans-serif;
   }
 
   .font-playfair {
     font-family: 'Playfair Display', serif;
+  }
+  
+  .font-dancing {
+    font-family: 'Dancing Script', 'Caveat', cursive;
   }
 }
 
@@ -215,21 +227,22 @@
 
 /* Navigation styles */
 .nav-link {
-  @apply relative px-4 py-2 text-foreground hover:text-impression-purple transition-colors duration-300;
-  font-family: 'Dancing Script', cursive;
-  font-size: 1.4rem;
+  @apply relative px-4 py-2 transition-colors duration-300;
+  font-family: 'Dancing Script', 'Caveat', cursive;
+  font-size: 1.5rem;
 }
 
 .nav-link:after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: -2px;
   left: 50%;
   width: 0;
-  height: 2px;
+  height: 3px;
   @apply bg-impression-purple;
   transition: all 0.3s ease;
   transform: translateX(-50%);
+  border-radius: 3px;
 }
 
 .nav-link:hover:after {
@@ -258,19 +271,24 @@
 }
 
 @keyframes pulse-slow {
-  0%, 100% { opacity: 0.1; }
-  50% { opacity: 0.2; }
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.25; transform: scale(1.05); }
 }
 
 @keyframes spin-slow {
-  0% { transform: rotate(0deg) scale(1); opacity: 0.03; }
-  50% { transform: rotate(180deg) scale(1.1); opacity: 0.05; }
-  100% { transform: rotate(360deg) scale(1); opacity: 0.03; }
+  0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); opacity: 0.04; }
+  50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.1); opacity: 0.06; }
+  100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); opacity: 0.04; }
 }
 
 @keyframes fade-in {
   0% { opacity: 0; transform: translateY(10px); }
   100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes brush-wave {
+  0%, 100% { transform: translateX(0) scaleY(1); }
+  50% { transform: translateX(2px) scaleY(1.03); }
 }
 
 @layer utilities {
@@ -292,5 +310,9 @@
   
   .animate-fade-in {
     animation: fade-in 0.5s ease-out forwards;
+  }
+  
+  .animate-brush-rotate {
+    animation: brush-wave 12s ease-in-out infinite;
   }
 }

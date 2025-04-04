@@ -9,13 +9,15 @@ const CursorTrail: React.FC = () => {
   
   useEffect(() => {
     const mouseMoveHandler = (e: MouseEvent) => {
-      // Update main cursor
-      const scrollX = window.scrollX;
-      const scrollY = window.scrollY;
+      // Get scroll position
+      const scrollX = window.scrollX || document.documentElement.scrollLeft;
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
       
+      // Calculate absolute position considering scroll
       const cursorX = e.clientX + scrollX;
       const cursorY = e.clientY + scrollY;
       
+      // Update main cursor position
       setMainCursor({
         visible: true,
         x: e.clientX,
@@ -24,13 +26,14 @@ const CursorTrail: React.FC = () => {
       
       const now = Date.now();
       
-      // Only add trail dots if the cursor has moved enough or enough time has passed
+      // Always add trail dots when mouse moves
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      
       if (
-        Math.abs(cursorX - lastPosition.x) > 10 || 
-        Math.abs(cursorY - lastPosition.y) > 10 ||
-        now - lastPosition.time > 100
+        Math.abs(cursorX - lastPosition.x) > 5 || 
+        Math.abs(cursorY - lastPosition.y) > 5 ||
+        now - lastPosition.time > 40
       ) {
-        const randomColor = colors[Math.floor(Math.random() * colors.length)];
         setPositions(prev => [...prev, {
           id: now,
           x: cursorX,

@@ -57,10 +57,9 @@ const Contact = () => {
     <div className="min-h-screen flex flex-col items-center justify-center py-24 px-4 relative overflow-hidden">
       {/* Enhanced background elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-impression-pink opacity-10 rounded-full blur-3xl animate-float-slow"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-impression-blue opacity-10 rounded-full blur-3xl animate-float-reverse"></div>
-        <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-impression-yellow opacity-10 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-br from-impression-cream/5 via-impression-pink/5 to-impression-blue/5 rounded-full blur-3xl animate-spin-slow"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-impression-pink opacity-20 rounded-full blur-3xl animate-float-slow"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-impression-blue opacity-20 rounded-full blur-3xl animate-float-reverse"></div>
+        <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-impression-yellow opacity-20 rounded-full blur-3xl animate-pulse-slow"></div>
       </div>
       
       <motion.div 
@@ -71,7 +70,7 @@ const Contact = () => {
       >
         <div className="paint-card">
           <motion.h1 
-            className="text-4xl md:text-6xl font-bold mb-8 text-center"
+            className="text-4xl md:text-6xl font-bold mb-8 text-center font-playfair"
             variants={itemVariants}
           >
             <span className="brush-stroke brush-stroke-pink">Contact Me</span>
@@ -102,14 +101,16 @@ const Contact = () => {
                   className="relative p-6 bg-white/80 backdrop-blur-sm rounded-xl shadow-lg transition-transform transform hover:scale-105 cursor-pointer"
                   onClick={copyEmail}
                 >
-                  <h2 className="text-2xl font-playfair text-impression-purple mb-2 border-b border-impression-purple/20 pb-1">Email</h2>
-                  <div className="flex flex-wrap items-center justify-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-impression-purple">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                    </svg>
-                    <p className="text-xl font-source-sans break-all">oceanaviktorial@gmail.com</p>
+                  <h2 className="text-2xl font-dancing text-impression-purple mb-2 border-b border-impression-purple/20 pb-1">Email</h2>
+                  <div className="flex flex-col items-center justify-center">
+                    <div className="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-impression-purple">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                      </svg>
+                    </div>
+                    <p className="text-lg font-source-sans break-all text-center mt-2">oceanaviktorial@gmail.com</p>
                   </div>
-                  <span className="text-sm text-impression-purple mt-2 block">
+                  <span className="text-sm text-impression-purple mt-2 block text-center">
                     {hasCopied ? 'Copied to clipboard!' : 'Click to copy'}
                   </span>
                   <div className="absolute top-0 right-0 m-2">
@@ -123,14 +124,16 @@ const Contact = () => {
                   className="relative p-6 bg-white/80 backdrop-blur-sm rounded-xl shadow-lg transition-transform transform hover:scale-105 cursor-pointer"
                   onClick={copySocial}
                 >
-                  <h2 className="text-2xl font-playfair text-impression-blue mb-2 border-b border-impression-blue/20 pb-1">Social Media</h2>
-                  <div className="flex flex-wrap items-center justify-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-impression-blue">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
-                    </svg>
-                    <p className="text-xl font-source-sans break-all">@oceanaviktoria.nebre</p>
+                  <h2 className="text-2xl font-dancing text-impression-blue mb-2 border-b border-impression-blue/20 pb-1">Social Media</h2>
+                  <div className="flex flex-col items-center justify-center">
+                    <div className="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-impression-blue">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
+                      </svg>
+                    </div>
+                    <p className="text-lg font-source-sans break-all text-center mt-2">@oceanaviktoria.nebre</p>
                   </div>
-                  <span className="text-sm text-impression-blue mt-2 block">
+                  <span className="text-sm text-impression-blue mt-2 block text-center">
                     {hasCopiedSocial ? 'Copied to clipboard!' : 'Click to copy'}
                   </span>
                   <div className="absolute top-0 right-0 m-2">
@@ -143,7 +146,7 @@ const Contact = () => {
               
               <div className="p-8 rounded-xl bg-gradient-to-br from-white/90 via-[#f9fafc] to-[#e6f0ff]/80 shadow-lg border border-white/60 relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-impression-pink/30 via-impression-purple/30 to-impression-blue/30"></div>
-                <h2 className="text-2xl font-playfair text-impression-purple mb-3">Let's Connect!</h2>
+                <h2 className="text-2xl font-dancing text-impression-purple mb-3">Let's Connect!</h2>
                 <p className="text-lg font-source-sans text-gray-700">
                   I'm always interested in new opportunities, collaborations, or just chatting about art and web development!
                   Feel free to reach out through any of the channels above.

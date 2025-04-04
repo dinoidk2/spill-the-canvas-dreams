@@ -22,10 +22,9 @@ const Profile = () => {
     <div className="min-h-screen flex flex-col items-center justify-center py-24 px-4 relative overflow-hidden">
       {/* Enhanced background elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-impression-blue opacity-10 rounded-full blur-3xl animate-float-slow"></div>
-        <div className="absolute bottom-0 right-0 w-72 h-72 bg-impression-purple opacity-10 rounded-full blur-3xl animate-float-reverse"></div>
-        <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-impression-pink opacity-10 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-br from-impression-cream/5 via-impression-green/5 to-impression-blue/5 rounded-full blur-3xl animate-spin-slow"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-impression-blue opacity-20 rounded-full blur-3xl animate-float-slow"></div>
+        <div className="absolute bottom-0 right-0 w-72 h-72 bg-impression-purple opacity-20 rounded-full blur-3xl animate-float-reverse"></div>
+        <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-impression-pink opacity-20 rounded-full blur-3xl animate-pulse-slow"></div>
       </div>
       
       <motion.div 
@@ -36,7 +35,7 @@ const Profile = () => {
       >
         <div className="paint-card">
           <motion.h1 
-            className="text-4xl md:text-6xl font-bold mb-8 text-center"
+            className="text-4xl md:text-6xl font-bold mb-8 text-center font-playfair"
             variants={itemVariants}
           >
             <span className="brush-stroke brush-stroke-blue">Profile</span>

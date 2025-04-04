@@ -35,11 +35,16 @@ const Home = () => {
     <div className="min-h-screen flex flex-col items-center justify-center py-16 px-4 relative overflow-hidden">
       {/* Enhanced background elements with more interesting patterns */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-impression-yellow opacity-10 rounded-full blur-3xl animate-float-slow"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-impression-purple opacity-10 rounded-full blur-3xl animate-float-reverse"></div>
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-impression-blue opacity-10 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-impression-pink opacity-10 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-br from-impression-cream/5 via-impression-pink/5 to-impression-purple/5 rounded-full blur-3xl animate-spin-slow"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-impression-yellow opacity-20 rounded-full blur-3xl animate-float-slow"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-impression-purple opacity-20 rounded-full blur-3xl animate-float-reverse"></div>
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-impression-blue opacity-20 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-impression-pink opacity-20 rounded-full blur-3xl animate-float"></div>
+      </div>
+      
+      {/* Paint brush strokes */}
+      <div className="absolute inset-0 pointer-events-none -z-5 overflow-hidden">
+        <div className="absolute top-[20%] left-[5%] w-32 h-24 opacity-20 rotate-12 bg-impression-cream rounded-full blur-md animate-brush-rotate"></div>
+        <div className="absolute bottom-[25%] right-[8%] w-40 h-16 opacity-30 -rotate-6 bg-impression-orange rounded-full blur-md animate-paint-pulse"></div>
       </div>
       
       <motion.div 
@@ -67,7 +72,7 @@ const Home = () => {
             </motion.h2>
             
             <motion.p 
-              className="text-xl md:text-2xl text-center text-muted-foreground max-w-2xl"
+              className="text-xl md:text-2xl text-center text-muted-foreground max-w-2xl font-source-sans"
               variants={itemVariants}
             >
               Welcome to a world where impressionism meets digital art. An artistic journey showcasing my portfolio and passions.
@@ -81,9 +86,9 @@ const Home = () => {
               <div className="relative w-full h-full rounded-full overflow-hidden border-8 border-white shadow-lg">
                 <div className="absolute inset-0 bg-gradient-to-br from-impression-blue via-impression-purple to-impression-pink opacity-40"></div>
                 <img 
-                  src="https://images.unsplash.com/photo-1500673922987-e212871fec22" 
-                  alt="Artistic impression" 
-                  className="w-full h-full object-cover mix-blend-overlay"
+                  src="/lovable-uploads/0a546865-b23b-4350-851e-35cdf210549d.png" 
+                  alt="Oceana Viktoria" 
+                  className="w-full h-full object-cover"
                 />
               </div>
             </motion.div>
@@ -101,7 +106,7 @@ const Home = () => {
             </motion.div>
             
             <motion.div 
-              className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8"
+              className="grid grid-cols-3 gap-4 mt-8 w-full max-w-lg"
               variants={itemVariants}
             >
               <Link 
@@ -123,15 +128,6 @@ const Home = () => {
               </Link>
               
               <Link 
-                to="/gallery" 
-                className="paint-border hover:scale-105 transition-transform"
-              >
-                <div className="bg-white py-4 px-8 rounded-xl flex flex-col items-center justify-center">
-                  <span className="text-2xl font-playfair font-bold text-impression-blue">Gallery</span>
-                </div>
-              </Link>
-              
-              <Link 
                 to="/contact" 
                 className="paint-border hover:scale-105 transition-transform"
               >
@@ -145,8 +141,8 @@ const Home = () => {
               className="text-center mt-8"
               variants={itemVariants}
             >
-              <p className="text-muted-foreground animate-brush-rotate font-source-sans">
-                ✨ Click and drag your mouse to create paint splatters! ✨
+              <p className="text-muted-foreground animate-brush-rotate font-dancing">
+                ✨ Move your mouse to create paint trails! ✨
               </p>
             </motion.div>
           </div>

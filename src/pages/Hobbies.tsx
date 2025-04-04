@@ -87,10 +87,10 @@ const Hobbies = () => {
     <div className="min-h-screen flex flex-col items-center py-24 px-4 relative overflow-hidden">
       {/* Enhanced background elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-impression-yellow opacity-10 rounded-full blur-3xl animate-float-slow"></div>
-        <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-impression-green opacity-10 rounded-full blur-3xl animate-float-reverse"></div>
-        <div className="absolute top-10 left-10 w-64 h-64 bg-impression-pink opacity-10 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div className="absolute bottom-1/4 right-0 w-48 h-48 bg-impression-blue opacity-10 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-impression-yellow opacity-20 rounded-full blur-3xl animate-float-slow"></div>
+        <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-impression-green opacity-20 rounded-full blur-3xl animate-float-reverse"></div>
+        <div className="absolute top-10 left-10 w-64 h-64 bg-impression-pink opacity-20 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-1/4 right-0 w-48 h-48 bg-impression-blue opacity-20 rounded-full blur-3xl animate-float"></div>
       </div>
       
       <motion.div 
@@ -101,14 +101,14 @@ const Hobbies = () => {
       >
         <div className="paint-card">
           <motion.h1 
-            className="text-4xl md:text-6xl font-bold mb-6 text-center"
+            className="text-4xl md:text-6xl font-bold mb-6 text-center font-playfair"
             variants={itemVariants}
           >
             <span className="brush-stroke brush-stroke-purple">My Hobbies</span>
           </motion.h1>
           
           <motion.p 
-            className="text-xl text-center text-muted-foreground max-w-3xl mx-auto mb-8"
+            className="text-xl text-center text-muted-foreground max-w-3xl mx-auto mb-8 font-source-sans"
             variants={itemVariants}
           >
             Explore my creative passions and interests through this interactive gallery.
@@ -122,7 +122,7 @@ const Hobbies = () => {
           >
             <button 
               onClick={() => setFilter('all')}
-              className={`px-6 py-2 rounded-full font-medium transition-colors ${
+              className={`px-6 py-2 rounded-full font-medium transition-colors font-dancing text-lg ${
                 filter === 'all' 
                   ? 'bg-impression-purple text-white shadow-md' 
                   : 'bg-white hover:bg-impression-purple/10'
@@ -132,7 +132,7 @@ const Hobbies = () => {
             </button>
             <button 
               onClick={() => setFilter('drawing')}
-              className={`px-6 py-2 rounded-full font-medium transition-colors ${
+              className={`px-6 py-2 rounded-full font-medium transition-colors font-dancing text-lg ${
                 filter === 'drawing' 
                   ? 'bg-impression-blue text-white shadow-md' 
                   : 'bg-white hover:bg-impression-blue/10'
@@ -142,7 +142,7 @@ const Hobbies = () => {
             </button>
             <button 
               onClick={() => setFilter('painting')}
-              className={`px-6 py-2 rounded-full font-medium transition-colors ${
+              className={`px-6 py-2 rounded-full font-medium transition-colors font-dancing text-lg ${
                 filter === 'painting' 
                   ? 'bg-impression-yellow text-white shadow-md' 
                   : 'bg-white hover:bg-impression-yellow/10'
@@ -152,7 +152,7 @@ const Hobbies = () => {
             </button>
             <button 
               onClick={() => setFilter('reading')}
-              className={`px-6 py-2 rounded-full font-medium transition-colors ${
+              className={`px-6 py-2 rounded-full font-medium transition-colors font-dancing text-lg ${
                 filter === 'reading' 
                   ? 'bg-impression-green text-white shadow-md' 
                   : 'bg-white hover:bg-impression-green/10'
@@ -162,7 +162,7 @@ const Hobbies = () => {
             </button>
             <button 
               onClick={() => setFilter('watching')}
-              className={`px-6 py-2 rounded-full font-medium transition-colors ${
+              className={`px-6 py-2 rounded-full font-medium transition-colors font-dancing text-lg ${
                 filter === 'watching' 
                   ? 'bg-impression-pink text-white shadow-md' 
                   : 'bg-white hover:bg-impression-pink/10'
@@ -174,7 +174,7 @@ const Hobbies = () => {
           
           {/* Gallery grid */}
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
             layout
             variants={containerVariants}
           >
@@ -195,8 +195,8 @@ const Hobbies = () => {
                     alt={hobby.name} 
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                   />
-                  <div className="gallery-overlay absolute inset-0 bg-gradient-to-t from-impression-purple/80 via-impression-blue/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <h3 className="gallery-title font-playfair text-2xl text-white drop-shadow-md absolute bottom-4 left-4 transform translate-y-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                  <div className="gallery-overlay absolute inset-0 bg-gradient-to-t from-impression-purple/80 via-impression-blue/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                    <h3 className="font-dancing text-3xl text-white drop-shadow-md transform translate-y-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                       {hobby.name}
                     </h3>
                   </div>
@@ -234,7 +234,7 @@ const Hobbies = () => {
                   </div>
                   
                   <div className="sm:w-1/2">
-                    <h3 className="text-3xl font-playfair text-impression-purple mb-3">{selectedHobby.name}</h3>
+                    <h3 className="text-3xl font-dancing text-impression-purple mb-3">{selectedHobby.name}</h3>
                     <p className="text-lg font-source-sans text-gray-700">{selectedHobby.description}</p>
                     
                     {selectedHobby.category === 'reading' && selectedHobby.details && (

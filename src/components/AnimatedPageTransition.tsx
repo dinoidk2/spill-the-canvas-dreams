@@ -1,35 +1,58 @@
 
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface AnimatedPageTransitionProps {
   children: React.ReactNode;
 }
 
-const AnimatedPageTransition: React.FC<AnimatedPageTransitionProps> = ({ children }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const location = useLocation();
+const pageVariants = {
+  initial: {
+    opacity: 0,
+    y: 20,
+    scale: 0.98
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.7,
+      ease: [0.22, 1, 0.36, 1]
+    }
+  },
+  exit: {
+    opacity: 0,
+    y: -20,
+    scale: 0.98,
+    transition: {
+      duration: 0.5
+    }
+  }
+};
 
+const AnimatedPageTransition: React.FC<AnimatedPageTransitionProps> = ({ children }) => {
+  const location = useLocation();
+  const [displayLocation, setDisplayLocation] = useState(location);
+  
   useEffect(() => {
-    setIsVisible(false);
-    
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 100);
-    
-    return () => clearTimeout(timer);
-  }, [location.pathname]);
+    setDisplayLocation(location);
+  }, [location]);
 
   return (
-    <div 
-      className={`page-container transition-all duration-700 ease-in-out ${
-        isVisible 
-          ? 'opacity-100 translate-y-0' 
-          : 'opacity-0 translate-y-12'
-      }`}
-    >
-      {children}
-    </div>
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={location.pathname}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        variants={pageVariants}
+        className="page-container min-h-screen w-full pt-24"
+      >
+        {children}
+      </motion.div>
+    </AnimatePresence>
   );
 };
 
