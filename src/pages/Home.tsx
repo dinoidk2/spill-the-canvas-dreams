@@ -1,11 +1,13 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useToast } from '@/components/ui/use-toast';
 import { motion } from 'framer-motion';
+import CursorTrail from '@/components/CursorTrail';
 
 const Home = () => {
   const { toast } = useToast();
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     // Welcome toast
@@ -14,6 +16,19 @@ const Home = () => {
       description: "Click around to explore and enjoy the interactive elements!",
       duration: 5000,
     });
+    
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({
+        x: e.clientX,
+        y: e.clientY
+      });
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
   }, [toast]);
 
   const containerVariants = {
@@ -33,20 +48,22 @@ const Home = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center py-16 px-4 relative overflow-hidden">
-      {/* Enhanced background elements with more interesting patterns */}
-      <div className="absolute inset-0 -z-10">
+      {/* Enhanced animated background elements with impressionist style */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-impression-yellow opacity-20 rounded-full blur-3xl animate-float-slow"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-impression-purple opacity-20 rounded-full blur-3xl animate-float-reverse"></div>
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-impression-blue opacity-20 rounded-full blur-3xl animate-pulse-slow"></div>
         <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-impression-pink opacity-20 rounded-full blur-3xl animate-float"></div>
+        
+        {/* Impressionist-style animated paint strokes */}
+        <div className="absolute w-full h-full overflow-hidden z-[-5]">
+          <div className="absolute top-[10%] left-[15%] w-40 h-20 bg-gradient-to-br from-impression-cream via-impression-pink to-impression-purple opacity-30 rounded-full blur-md transform rotate-12 animate-float-slow"></div>
+          <div className="absolute bottom-[25%] right-[10%] w-52 h-16 bg-gradient-to-br from-impression-blue via-impression-purple to-impression-cream opacity-30 rounded-full blur-md transform -rotate-12 animate-float-reverse"></div>
+          <div className="absolute top-[40%] right-[20%] w-32 h-32 bg-gradient-to-br from-impression-yellow via-impression-orange to-impression-pink opacity-20 rounded-full blur-lg transform rotate-45 animate-pulse-slow"></div>
+        </div>
       </div>
       
-      {/* Paint brush strokes */}
-      <div className="absolute inset-0 pointer-events-none -z-5 overflow-hidden">
-        <div className="absolute top-[20%] left-[5%] w-32 h-24 opacity-20 rotate-12 bg-impression-cream rounded-full blur-md animate-brush-rotate"></div>
-        <div className="absolute bottom-[25%] right-[8%] w-40 h-16 opacity-30 -rotate-6 bg-impression-orange rounded-full blur-md animate-paint-pulse"></div>
-      </div>
-      
+      {/* Main content */}
       <motion.div 
         className="max-w-4xl w-full mx-auto"
         initial="hidden"
@@ -57,7 +74,7 @@ const Home = () => {
           <div className="flex flex-col items-center justify-center space-y-8 py-8">
             {/* Main title */}
             <motion.h1 
-              className="text-5xl md:text-7xl font-bold text-center leading-tight animate-paint-float"
+              className="text-6xl md:text-7xl font-bold text-center leading-tight animate-paint-float"
               variants={itemVariants}
             >
               <span className="brush-stroke">Spill the</span> <br />
@@ -65,7 +82,7 @@ const Home = () => {
             </motion.h1>
             
             <motion.h2 
-              className="text-2xl md:text-3xl font-mono text-black text-center leading-relaxed"
+              className="text-2xl md:text-3xl font-source-sans text-black text-center leading-relaxed"
               variants={itemVariants}
             >
               Oceana Viktoria S. Nebre
@@ -79,14 +96,14 @@ const Home = () => {
             </motion.p>
             
             <motion.div 
-              className="relative w-56 h-56 sm:w-80 sm:h-80 rounded-full overflow-hidden animate-paint-pulse"
+              className="relative w-80 h-80 sm:w-96 sm:h-96 rounded-full overflow-hidden animate-paint-pulse"
               variants={itemVariants}
             >
               <div className="absolute inset-0 bg-gradient-canvas opacity-30 mix-blend-overlay"></div>
               <div className="relative w-full h-full rounded-full overflow-hidden border-8 border-white shadow-lg">
                 <div className="absolute inset-0 bg-gradient-to-br from-impression-blue via-impression-purple to-impression-pink opacity-40"></div>
                 <img 
-                  src="/lovable-uploads/0a546865-b23b-4350-851e-35cdf210549d.png" 
+                  src="/lovable-uploads/ac4edf6f-3570-43c5-9c99-28c1f3e38564.png" 
                   alt="Oceana Viktoria" 
                   className="w-full h-full object-cover"
                 />

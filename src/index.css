@@ -60,10 +60,11 @@
   body {
     @apply bg-background text-foreground overflow-x-hidden;
     font-family: 'Source Sans 3', 'Nunito', sans-serif;
+    /* Improved background with impressionist-inspired patterns */
     background-image: 
-      radial-gradient(circle at 85% 25%, rgba(155, 135, 245, 0.04) 0%, transparent 35%),
-      radial-gradient(circle at 15% 75%, rgba(254, 198, 214, 0.04) 0%, transparent 35%),
-      radial-gradient(circle at 50% 50%, rgba(107, 174, 217, 0.03) 0%, transparent 50%);
+      radial-gradient(circle at 85% 25%, rgba(155, 135, 245, 0.05) 0%, transparent 35%),
+      radial-gradient(circle at 15% 75%, rgba(254, 198, 214, 0.06) 0%, transparent 35%),
+      radial-gradient(circle at 50% 50%, rgba(107, 174, 217, 0.04) 0%, transparent 50%);
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -76,6 +77,7 @@
 }
 
 @layer components {
+  /* Improved brush stroke effect */
   .brush-stroke {
     position: relative;
     display: inline-block;
@@ -106,6 +108,7 @@
     background-image: url("data:image/svg+xml,%3Csvg width='200' height='12' viewBox='0 0 200 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 6C40 1.5 70 10.5 100 6C130 1.5 160 10.5 200 6' stroke='%23FEC6D6' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
   }
   
+  /* Improved paint card with more impressionist feel */
   .paint-card {
     position: relative;
     z-index: 1;
@@ -225,7 +228,7 @@
   }
 }
 
-/* Navigation styles */
+/* Navigation styles with improved fonts */
 .nav-link {
   @apply relative px-4 py-2 transition-colors duration-300;
   font-family: 'Dancing Script', 'Caveat', cursive;
@@ -254,8 +257,8 @@
 }
 
 /* Page transitions */
-.page-container {
-  min-height: calc(100vh - 80px);
+.page-transition {
+  min-height: 100vh;
   width: 100%;
 }
 
@@ -268,6 +271,11 @@
 @keyframes float-reverse {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(15px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
 }
 
 @keyframes pulse-slow {
@@ -291,6 +299,16 @@
   50% { transform: translateX(2px) scaleY(1.03); }
 }
 
+@keyframes paint-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(155, 135, 245, 0.4); }
+  50% { box-shadow: 0 0 0 15px rgba(155, 135, 245, 0); }
+}
+
+@keyframes paint-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
 @layer utilities {
   .animate-float-slow {
     animation: float-slow 15s ease-in-out infinite;
@@ -298,6 +316,10 @@
   
   .animate-float-reverse {
     animation: float-reverse 18s ease-in-out infinite;
+  }
+  
+  .animate-float {
+    animation: float 12s ease-in-out infinite;
   }
   
   .animate-pulse-slow {
@@ -314,5 +336,25 @@
   
   .animate-brush-rotate {
     animation: brush-wave 12s ease-in-out infinite;
+  }
+  
+  .animate-paint-pulse {
+    animation: paint-pulse 3s ease-in-out infinite;
+  }
+  
+  .animate-paint-float {
+    animation: paint-float 6s ease-in-out infinite;
+  }
+  
+  .bg-gradient-canvas {
+    background: linear-gradient(to right, rgba(155, 135, 245, 0.7), rgba(254, 198, 214, 0.7));
+  }
+  
+  .bg-gradient-sunset {
+    background: linear-gradient(to right, rgba(255, 209, 102, 0.6), rgba(254, 198, 214, 0.6), rgba(107, 174, 217, 0.6));
+  }
+  
+  .bg-gradient-purple {
+    background: linear-gradient(120deg, rgba(155, 135, 245, 0.6), rgba(254, 198, 214, 0.6));
   }
 }

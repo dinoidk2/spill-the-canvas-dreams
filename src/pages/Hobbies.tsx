@@ -1,6 +1,13 @@
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious
+} from "@/components/ui/carousel";
 
 // Define hobby types for our gallery
 type HobbyType = 'drawing' | 'painting' | 'reading' | 'watching';
@@ -43,7 +50,7 @@ const Hobbies = () => {
     {
       id: '3',
       name: 'Reading',
-      description: 'Reading transports me to different worlds and perspectives. I enjoy diving into stories that challenge my thinking and expand my understanding of human experience and emotion.',
+      description: 'Reading gives me comfort, inspiration, and escape. I\'m especially drawn to emotionally complex characters and existential narratives.',
       image: 'https://images.unsplash.com/photo-1535016120720-40c646be5580?w=800&auto=format&fit=crop',
       category: 'reading',
       details: {
@@ -54,7 +61,7 @@ const Hobbies = () => {
     {
       id: '4',
       name: 'Watching',
-      description: 'I love immersing myself in animated series and shows that combine beautiful visuals with compelling storytelling. These media inspire my own artistic journey and creative thinking.',
+      description: 'I enjoy watching anime, animated series, and shows that are emotionally or visually impactful.',
       image: 'https://images.unsplash.com/photo-1578022761797-b8636ac1773c?w=800&auto=format&fit=crop',
       category: 'watching',
       details: {
@@ -83,14 +90,32 @@ const Hobbies = () => {
     visible: { y: 0, opacity: 1 }
   };
   
+  // Sample carousel images (replace with your own later)
+  const carouselImages = {
+    painting: [
+      'https://images.unsplash.com/photo-1541753866388-0b3c701627d3?w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800&auto=format&fit=crop'
+    ],
+    drawing: [
+      'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1602738328654-51ab2ae6c4ff?w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1599818497948-eaf9deadfced?w=800&auto=format&fit=crop'
+    ]
+  };
+  
   return (
     <div className="min-h-screen flex flex-col items-center py-24 px-4 relative overflow-hidden">
-      {/* Enhanced background elements */}
+      {/* Enhanced impressionist-style background elements */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-impression-yellow opacity-20 rounded-full blur-3xl animate-float-slow"></div>
         <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-impression-green opacity-20 rounded-full blur-3xl animate-float-reverse"></div>
         <div className="absolute top-10 left-10 w-64 h-64 bg-impression-pink opacity-20 rounded-full blur-3xl animate-pulse-slow"></div>
         <div className="absolute bottom-1/4 right-0 w-48 h-48 bg-impression-blue opacity-20 rounded-full blur-3xl animate-float"></div>
+        
+        {/* Animated brush strokes */}
+        <div className="absolute top-[15%] left-[20%] w-32 h-24 bg-gradient-to-br from-impression-cream to-impression-pink opacity-20 rounded-full blur-lg transform rotate-12 animate-float-slow"></div>
+        <div className="absolute bottom-[30%] left-[50%] w-48 h-12 bg-gradient-to-br from-impression-blue to-impression-purple opacity-20 rounded-full blur-lg transform -rotate-6 animate-float-reverse"></div>
       </div>
       
       <motion.div 
@@ -195,7 +220,7 @@ const Hobbies = () => {
                     alt={hobby.name} 
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                   />
-                  <div className="gallery-overlay absolute inset-0 bg-gradient-to-t from-impression-purple/80 via-impression-blue/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <div className="absolute inset-0 bg-gradient-to-t from-impression-purple/80 via-impression-blue/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                     <h3 className="font-dancing text-3xl text-white drop-shadow-md transform translate-y-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                       {hobby.name}
                     </h3>
@@ -205,40 +230,64 @@ const Hobbies = () => {
             ))}
           </motion.div>
           
-          {/* Hobby detail modal */}
-          {selectedHobby && (
-            <div 
-              className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 backdrop-blur-sm" 
-              onClick={() => setSelectedHobby(null)}
-            >
+          {/* Hobby detail modal - positioned to be visible without scrolling on mobile */}
+          <AnimatePresence>
+            {selectedHobby && (
               <motion.div 
-                className="bg-white rounded-xl p-6 max-w-3xl w-full mx-4 relative shadow-2xl"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                onClick={(e) => e.stopPropagation()}
+                className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 backdrop-blur-sm" 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setSelectedHobby(null)}
               >
-                <button 
-                  className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-impression-purple text-white hover:bg-impression-purple/80 transition-colors"
-                  onClick={() => setSelectedHobby(null)}
+                <motion.div 
+                  className="bg-white rounded-xl p-6 max-w-3xl w-full mx-4 relative shadow-2xl max-h-[90vh] overflow-y-auto"
+                  initial={{ opacity: 0, scale: 0.9, y: 50 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.9, y: 50 }}
+                  onClick={(e) => e.stopPropagation()}
                 >
-                  ✕
-                </button>
-                
-                <div className="flex flex-col sm:flex-row gap-6">
-                  <div className="sm:w-1/2">
-                    <img 
-                      src={selectedHobby.image} 
-                      alt={selectedHobby.name} 
-                      className="w-full h-64 object-cover rounded-lg shadow-md"
-                    />
-                  </div>
+                  <button 
+                    className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-impression-purple text-white hover:bg-impression-purple/80 transition-colors z-10"
+                    onClick={() => setSelectedHobby(null)}
+                  >
+                    ✕
+                  </button>
                   
-                  <div className="sm:w-1/2">
-                    <h3 className="text-3xl font-dancing text-impression-purple mb-3">{selectedHobby.name}</h3>
+                  <div className="flex flex-col gap-6">
+                    <h3 className="text-3xl font-dancing text-impression-purple mb-1">{selectedHobby.name}</h3>
+                    
+                    {/* Carousel for drawing and painting */}
+                    {(selectedHobby.category === 'painting' || selectedHobby.category === 'drawing') && (
+                      <div className="mb-4">
+                        <Carousel className="w-full">
+                          <CarouselContent>
+                            {(selectedHobby.category === 'painting' ? carouselImages.painting : carouselImages.drawing).map((image, index) => (
+                              <CarouselItem key={index}>
+                                <div className="p-1">
+                                  <div className="overflow-hidden rounded-lg">
+                                    <img 
+                                      src={image} 
+                                      alt={`${selectedHobby.name} ${index + 1}`}
+                                      className="w-full h-64 object-cover" 
+                                    />
+                                  </div>
+                                </div>
+                              </CarouselItem>
+                            ))}
+                          </CarouselContent>
+                          <div className="flex justify-center mt-4 gap-4">
+                            <CarouselPrevious className="relative -left-0" />
+                            <CarouselNext className="relative -right-0" />
+                          </div>
+                        </Carousel>
+                      </div>
+                    )}
+                    
                     <p className="text-lg font-source-sans text-gray-700">{selectedHobby.description}</p>
                     
                     {selectedHobby.category === 'reading' && selectedHobby.details && (
-                      <div className="mt-6 space-y-4">
+                      <div className="space-y-4">
                         <div className="p-4 bg-gradient-to-br from-white/90 via-[#f9fafc] to-[#e6f0ff]/80 rounded-lg shadow-md border border-white/60">
                           <h4 className="text-xl font-playfair text-impression-blue mb-2">Genres</h4>
                           <div className="flex flex-wrap gap-2">
@@ -254,7 +303,7 @@ const Hobbies = () => {
                           <h4 className="text-xl font-playfair text-impression-purple mb-2">Favorite Books</h4>
                           <ul className="list-disc list-inside text-gray-700">
                             {selectedHobby.details.favorites?.map((book, index) => (
-                              <li key={index}>{book}</li>
+                              <li key={index} className="font-source-sans">{book}</li>
                             ))}
                           </ul>
                         </div>
@@ -262,20 +311,20 @@ const Hobbies = () => {
                     )}
                     
                     {selectedHobby.category === 'watching' && selectedHobby.details && (
-                      <div className="mt-6 p-4 bg-gradient-to-br from-white/90 via-[#f9fafc] to-[#e6f0ff]/80 rounded-lg shadow-md border border-white/60">
+                      <div className="p-4 bg-gradient-to-br from-white/90 via-[#f9fafc] to-[#e6f0ff]/80 rounded-lg shadow-md border border-white/60">
                         <h4 className="text-xl font-playfair text-impression-pink mb-2">Favorite Shows</h4>
                         <ul className="list-disc list-inside text-gray-700">
                           {selectedHobby.details.examples?.map((show, index) => (
-                            <li key={index}>{show}</li>
+                            <li key={index} className="font-source-sans">{show}</li>
                           ))}
                         </ul>
                       </div>
                     )}
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
-            </div>
-          )}
+            )}
+          </AnimatePresence>
         </div>
       </motion.div>
     </div>

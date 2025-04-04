@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const Profile = () => {
   const containerVariants = {
@@ -20,11 +21,15 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center py-24 px-4 relative overflow-hidden">
-      {/* Enhanced background elements */}
+      {/* Enhanced impressionist-style background elements */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 left-0 w-96 h-96 bg-impression-blue opacity-20 rounded-full blur-3xl animate-float-slow"></div>
         <div className="absolute bottom-0 right-0 w-72 h-72 bg-impression-purple opacity-20 rounded-full blur-3xl animate-float-reverse"></div>
         <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-impression-pink opacity-20 rounded-full blur-3xl animate-pulse-slow"></div>
+        
+        {/* Animated brush strokes for impressionist feel */}
+        <div className="absolute top-[30%] left-[10%] w-40 h-12 bg-gradient-to-r from-impression-yellow to-impression-orange opacity-20 rounded-full blur-lg transform rotate-45 animate-float-slow"></div>
+        <div className="absolute bottom-[20%] right-[15%] w-60 h-16 bg-gradient-to-r from-impression-blue to-impression-purple opacity-20 rounded-full blur-lg transform -rotate-12 animate-float-reverse"></div>
       </div>
       
       <motion.div 
@@ -51,7 +56,7 @@ const Profile = () => {
                 <div className="relative w-full h-full rounded-full overflow-hidden border-8 border-white shadow-lg">
                   <div className="absolute inset-0 bg-gradient-to-br from-impression-cream via-impression-pink to-impression-orange opacity-40"></div>
                   <img 
-                    src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" 
+                    src="/lovable-uploads/ac4edf6f-3570-43c5-9c99-28c1f3e38564.png" 
                     alt="Profile" 
                     className="w-full h-full object-cover"
                   />
@@ -91,11 +96,11 @@ const Profile = () => {
                 
                 <div className="space-y-4">
                   <p className="text-lg leading-relaxed font-source-sans text-gray-700">
-                    I'm a student leader with a focus on practical solutions, creative thinking, and student well-being. I'm passionate about improving academic systems, creating meaningful initiatives, and building spaces where people feel supported and heard.
+                    I'm a student leader focused on practical solutions, creative thinking, and student well-being. I'm passionate about improving academic systems, creating meaningful initiatives, and building spaces where people feel supported and heard.
                   </p>
                   
                   <p className="text-lg leading-relaxed font-source-sans text-gray-700">
-                    Outside of leadership, I'm deeply interested in the arts. Drawing is my main creative outlet, and I also enjoy painting, reading manga, manhwa, manhua, and classic literature. Art plays a central role in how I understand and engage with the world.
+                    Outside of leadership, I'm deeply engaged in the arts. Drawing is my primary creative outlet, and I also enjoy painting, reading manga, manhwa, manhua, and classic literature. Art plays a central role in how I understand and engage with the world.
                   </p>
                 </div>
               </div>

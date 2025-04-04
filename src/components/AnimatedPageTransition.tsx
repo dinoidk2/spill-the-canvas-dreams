@@ -37,6 +37,7 @@ const AnimatedPageTransition: React.FC<AnimatedPageTransitionProps> = ({ childre
   const [displayLocation, setDisplayLocation] = useState(location);
   
   useEffect(() => {
+    // Update location when it changes
     setDisplayLocation(location);
   }, [location]);
 
@@ -48,7 +49,7 @@ const AnimatedPageTransition: React.FC<AnimatedPageTransitionProps> = ({ childre
         animate="animate"
         exit="exit"
         variants={pageVariants}
-        className="page-container min-h-screen w-full pt-24"
+        className="page-transition w-full min-h-screen"
       >
         {children}
       </motion.div>
